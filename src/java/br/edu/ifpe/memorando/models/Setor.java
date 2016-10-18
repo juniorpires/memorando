@@ -9,7 +9,7 @@ package br.edu.ifpe.memorando.models;
  *
  * @author casa01
  */
-public class Setor {
+public class Setor extends IModel<Setor>{
     
     private int id;
     private String sigla;
@@ -70,6 +70,26 @@ public class Setor {
      */
     public void setNumeroMemorando(String numeroMemorando) {
         this.numeroMemorando = numeroMemorando;
+    }
+
+    @Override
+    public void copyAttributesOf(Setor copy) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void unsetAttributes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cleanStringWithNull() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String label() {
+        return this.sigla;
     }
     
 }
