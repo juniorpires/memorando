@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CadastrarSetor", urlPatterns = {"/CadastrarSetor"})
 public class CadastrarSetor extends HttpServlet {
 
+    public static final String MENSAGEM="msg";
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,33 +39,39 @@ public class CadastrarSetor extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Setor s = new Setor();
-        s.setId(2);
-        s.setSenha("abcd");
-        s.setSigla("DAB");
-        s.setNumeroMemorando("1234567890");
         
-        SetorDao dao = new SetorDao();
         
-        request.setAttribute("s", s);
+         Setor s = new Setor();
+         
+         
+         //verifica se foi passado algum parâmetro
+         if(request.getParameterNames().hasMoreElements()){
+            s.setNome(request.getParameter(Setor.NOME));
+            s.setSenha(request.getParameter(Setor.SENHA));
+            s.setSigla(request.getParameter(Setor.SIGLA));
+        
+            SetorDao dao = new SetorDao();
+        
         
         try {
             if(dao.save(s, true)){
-                   this.getServletContext().getRequestDispatcher("/cadastrarSetor.jsp").forward(request,response);
+                  request.setAttribute(MENSAGEM,"O setor foi salvo com sucesso!");
             }else{
-                 this.getServletContext().getRequestDispatcher("/erroCadastro.jsp").forward(request,response);
+                request.setAttribute(MENSAGEM,"Não fou possível salvar o setor.");  
             }
             
         } catch (SaveException ex) {
             Logger.getLogger(CadastrarSetor.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoUniqueObjectException ex) {
             Logger.getLogger(CadastrarSetor.class.getName()).log(Level.SEVERE, null, ex);
-            this.getServletContext().getRequestDispatcher("/erroCadastro.jsp").forward(request,response);
+             request.setAttribute(MENSAGEM,"Não foi possível cadastrar. Já existe.");
         } catch (ManyObjectFoundException ex) {
             Logger.getLogger(CadastrarSetor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
+         }
+         this.getServletContext().getRequestDispatcher("/cadastrarSetor.jsp").forward(request,response);
         
     }
 

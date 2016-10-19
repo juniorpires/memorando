@@ -19,7 +19,7 @@ public class SetorDao extends GenericDb4oDAO<Setor>{
     protected Query getQueryToUniqueObject(Setor model, ObjectContainer db) {
         Query query = db.query();
 		query.constrain(Setor.class);
-		query.descend("id").constrain(model.getId());
+		query.descend("sigla").constrain(model.getSigla());
 
 		return query;
     }

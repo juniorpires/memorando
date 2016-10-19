@@ -5,30 +5,39 @@
  */
 package br.edu.ifpe.memorando.models;
 
+import java.util.List;
+import java.util.UUID;
+
 /**
  *
  * @author casa01
  */
 public class Setor extends IModel<Setor>{
     
-    private int id;
+    
+    public static final String NOME= "nome";
+    public static final String SIGLA= "sigla";
+    public static final String SENHA = "senha";
+            
+    private String id;
+    private String nome;
     private String sigla;
     private String senha;
-    private String numeroMemorando;
+    private List<Memorando> memorandos;
 
+    
+    
+   public Setor(){
+       this.id = UUID.randomUUID().toString();
+   }
     /**
      * @return the id
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
+    
 
     /**
      * @return the sigla
@@ -58,19 +67,7 @@ public class Setor extends IModel<Setor>{
         this.senha = senha;
     }
 
-    /**
-     * @return the numeroMemorando
-     */
-    public String getNumeroMemorando() {
-        return numeroMemorando;
-    }
-
-    /**
-     * @param numeroMemorando the numeroMemorando to set
-     */
-    public void setNumeroMemorando(String numeroMemorando) {
-        this.numeroMemorando = numeroMemorando;
-    }
+   
 
     @Override
     public void copyAttributesOf(Setor copy) {
@@ -90,6 +87,34 @@ public class Setor extends IModel<Setor>{
     @Override
     public String label() {
         return this.sigla;
+    }
+
+    /**
+     * @return the memorandos
+     */
+    public List<Memorando> getMemorandos() {
+        return memorandos;
+    }
+
+    /**
+     * @param memorandos the memorandos to set
+     */
+    public void setMemorandos(List<Memorando> memorandos) {
+        this.memorandos = memorandos;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
 }

@@ -5,32 +5,35 @@
  */
 package br.edu.ifpe.memorando.models;
 
+import java.util.UUID;
+
 /**
  *
  * @author casa01
  */
-public class Memorando {
+public class Memorando extends IModel<Setor>{
     
-    private int id;
+    private String id;
     private String numero;
     private String assunto;
     private String mensagem;
     private Status status;
     private Tipo tipo;
+    private Setor setorOrigem;
+    private Setor setorDestino;
+    
 
+    
+    public Memorando(){
+        this.id = UUID.randomUUID().toString();
+    }
     /**
      * @return the id
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
 
     /**
      * @return the numero
@@ -100,6 +103,54 @@ public class Memorando {
      */
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
+    }
+
+    /**
+     * @return the setorOrigem
+     */
+    public Setor getSetorOrigem() {
+        return setorOrigem;
+    }
+
+    /**
+     * @param setorOrigem the setorOrigem to set
+     */
+    public void setSetorOrigem(Setor setorOrigem) {
+        this.setorOrigem = setorOrigem;
+    }
+
+    /**
+     * @return the setorDestino
+     */
+    public Setor getSetorDestino() {
+        return setorDestino;
+    }
+
+    /**
+     * @param setorDestino the setorDestino to set
+     */
+    public void setSetorDestino(Setor setorDestino) {
+        this.setorDestino = setorDestino;
+    }
+
+    @Override
+    public void copyAttributesOf(Setor copy) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void unsetAttributes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void cleanStringWithNull() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String label() {
+        return this.assunto;
     }
     
 }
