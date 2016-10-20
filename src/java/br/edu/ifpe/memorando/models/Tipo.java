@@ -10,5 +10,21 @@ package br.edu.ifpe.memorando.models;
  * @author casa01
  */
 public enum Tipo {
-    CIRCULAR,REQUISICAO
+    CIRCULAR("1"),REQUISICAO("2");
+    
+    private String codigo;
+    
+      Tipo(String codigo){
+          this.codigo = codigo;
+    }
+        
+      
+      public static Tipo fromValue(int value) 
+             throws IllegalArgumentException {
+         try {
+              return Tipo.values()[value];
+         } catch(ArrayIndexOutOfBoundsException e) {
+              throw new IllegalArgumentException("Unknown enum value :"+ value);
+         }
+     }
 }

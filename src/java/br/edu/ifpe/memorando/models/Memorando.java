@@ -13,6 +13,17 @@ import java.util.UUID;
  */
 public class Memorando extends IModel<Setor>{
     
+    
+    public static final String NUMERO = "numero";
+    public static final String ASSUNTO = "assunto";
+    public static final String MENSAGEM = "mensagem";
+    public static final String STATUS = "status";
+    public static final String TIPO = "tipo";
+    public static final String SETOR_ORIGEM = "setorOrigem";
+    public static final String SETOR_DESTINO = "setorDestino";
+            
+            
+            
     private String id;
     private String numero;
     private String assunto;

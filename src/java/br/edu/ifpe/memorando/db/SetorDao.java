@@ -5,9 +5,12 @@
  */
 package br.edu.ifpe.memorando.db;
 
+import br.edu.ifpe.memorando.exception.ManyObjectFoundException;
 import br.edu.ifpe.memorando.models.Setor;
 import com.db4o.ObjectContainer;
 import com.db4o.query.Query;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,6 +25,22 @@ public class SetorDao extends GenericDb4oDAO<Setor>{
 		query.descend("sigla").constrain(model.getSigla());
 
 		return query;
+    }
+    
+    public Setor findById(String id){
+        Setor setor = new Setor();
+        setor.setId(id);
+        ObjectContainer db = this.open();
+        
+                
+        Setor s=null;
+        try {
+            s = this.find(setor);
+        } catch (ManyObjectFoundException ex) {
+            Logger.getLogger(SetorDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return s;
     }
     
 }

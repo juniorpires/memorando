@@ -21,7 +21,7 @@
         <form  action="CadastrarSetor" method="POST">
            Nome: <input type="text" name="nome">
            Sigla: <input type="text" name="sigla">
-           Senha: <input type="text" name="senha">
+           Senha: <input type="password" name="senha">
            <input type="submit" value="Inserir">
         </form>
         

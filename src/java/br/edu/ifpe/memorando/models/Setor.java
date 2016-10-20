@@ -116,5 +116,12 @@ public class Setor extends IModel<Setor>{
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
     
 }
