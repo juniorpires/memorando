@@ -26,9 +26,17 @@ public class Setor extends IModel<Setor>{
     private List<Memorando> memorandos;
 
     
-    
+   public static Setor createSetor(){
+       Setor s = new Setor();
+       s.gerarId();
+       return s;
+   }
    public Setor(){
-       this.id = UUID.randomUUID().toString();
+      
+   }
+   
+   private void gerarId(){
+        this.id = UUID.randomUUID().toString();
    }
     /**
      * @return the id

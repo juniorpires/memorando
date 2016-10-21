@@ -11,26 +11,67 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/memorando.css">
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <title>Memorando</title>
     </head>
     <body>
+        <!-- Fixed navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.jsp">Memorando</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="index.jsp">Home</a></li>
+            <li class="active"><a href="/memorando/CadastrarSetor">Cadastrar Setor</a></li>
+            <li><a href="/memorando/EnviarMemorando">Enviar Memorando </a></li>
+            <li><a href="/memorando/ListarMemorandos">Listar Memorandos </a></li>
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
         <h3>${msg}</h3>
-        <h1>Cadastrar Setor</h1>
-        <form  action="CadastrarSetor" method="POST">
-           Nome: <input type="text" name="nome">
-           Sigla: <input type="text" name="sigla">
-           Senha: <input type="password" name="senha">
-           <input type="submit" value="Inserir">
+        <div class="container">
+        <h3>Cadastrar Setor</h3>
+        <form  action="CadastrarSetor" method="POST" class="form-horizontal">
+            <div class="form-group">
+                <span class="col-md-4">
+                 <input type="text" class="form-control" name="nome" placeholder="Nome" aria-describedby="basic-addon1">
+                </span>
+            </div>
+            <div class="form-group">
+                <span class="col-md-4">
+                 <input type="text" class="form-control" name="sigla" placeholder="Sigla" aria-describedby="basic-addon1">
+                </span>
+            </div>
+            <div class="form-group">
+                <span class="col-md-4">
+                 <input type="password" class="form-control" name="senha" placeholder="Senha" aria-describedby="basic-addon1">
+                </span>
+            </div>
+
+           <input type="submit" class="btn btn-default" value="Inserir">
         </form>
-        
+        </div>
         <br/>
         <br/>
         <br/>
         <br/>
         <br/>
-        <table>
+        <table class="table table-striped">
             
             <tr>
                 <th>Nome</th>

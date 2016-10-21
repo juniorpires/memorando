@@ -41,7 +41,7 @@ public class CadastrarSetor extends HttpServlet {
             throws ServletException, IOException {
         
         
-         Setor s = new Setor();
+         Setor s = Setor.createSetor();
          
          
          //verifica se foi passado algum parâmetro

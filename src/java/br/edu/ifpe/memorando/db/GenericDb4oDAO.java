@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import br.edu.ifpe.memorando.models.Memorando;
 
 public abstract class GenericDb4oDAO<T extends IModel> implements IDAO<T> {
 
@@ -72,9 +73,21 @@ public abstract class GenericDb4oDAO<T extends IModel> implements IDAO<T> {
 		
 		config.file().lockDatabaseFile(false);
 		
-		// bairro
-		config.common().objectClass(Setor.class).objectField("codigo")
+		// Setor
+		config.common().objectClass(Setor.class).objectField("sigla")
 				.indexed(true);
+                
+                //Memorando
+                config.common().objectClass(Memorando.class).objectField("id")
+				.indexed(true);
+                config.common().objectClass(Memorando.class).objectField("setorOrigem")
+				.indexed(true);
+                config.common().objectClass(Memorando.class).objectField("setorDestino")
+				.indexed(true);
+                config.common().objectClass(Memorando.class).objectField("setorOrigem")
+				.cascadeOnDelete(true);
+                config.common().objectClass(Memorando.class).objectField("setorDestino")
+				.cascadeOnDelete(true);
 
 		
 

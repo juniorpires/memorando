@@ -27,9 +27,9 @@ public class SetorDao extends GenericDb4oDAO<Setor>{
 		return query;
     }
     
-    public Setor findById(String id){
+    public Setor findBySigla(String sigla){
         Setor setor = new Setor();
-        setor.setId(id);
+        setor.setSigla(sigla);
         ObjectContainer db = this.open();
         
                 

@@ -32,10 +32,21 @@ public class Memorando extends IModel<Setor>{
     private Tipo tipo;
     private Setor setorOrigem;
     private Setor setorDestino;
+    private String sequencia;
+    private String ano;
     
 
+    public static Memorando createMemorando(){
+        Memorando m = new Memorando();
+        m.gerarId();
+        return m;
+    }
     
     public Memorando(){
+        
+    }
+    
+    private void gerarId(){
         this.id = UUID.randomUUID().toString();
     }
     /**
@@ -162,6 +173,38 @@ public class Memorando extends IModel<Setor>{
     @Override
     public String label() {
         return this.assunto;
+    }
+
+    /**
+     * @return the sequencia
+     */
+    public String getSequencia() {
+        return sequencia;
+    }
+
+    /**
+     * @param sequencia the sequencia to set
+     */
+    public void setSequencia(String sequencia) {
+        this.sequencia = sequencia;
+    }
+
+    /**
+     * @return the ano
+     */
+    public String getAno() {
+        return ano;
+    }
+
+    /**
+     * @param ano the ano to set
+     */
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+    
+    public void gerarNumero(){
+        this.numero = this.sequencia+"/"+this.ano;
     }
     
 }
